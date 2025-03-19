@@ -5,6 +5,8 @@ const Messagesmain = () => {
   return (
     <div>
         <Message/>
+        <Message/>
+        <Message/>
         
     </div>
   )

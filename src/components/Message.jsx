@@ -1,9 +1,18 @@
 import React from "react";
 import { MdCropSquare, MdStar } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const Message = () => {
+
+  const navigate = useNavigate()
+
+  const opemMail=()=>{
+    navigate('/mail/w12kjfj123kj')
+  }
+
+
   return (
-    <div className="flex items-start hover:bg-slate-100  cursor-pointer transition-all delay-100 border-b-2  rounded-md hover:rounded-md my-4 py-2   mx-2 shadow-lg">
+    <div onClick={opemMail} className="flex items-start hover:bg-slate-100  cursor-pointer transition-all delay-100 border-b-2  rounded-md hover:rounded-md my-4 py-2   mx-2 shadow-lg">
       <div className="flex items-center gap-3"></div>
       <div className="flex-none px-3 ">
         <MdCropSquare size={"20px"} />
