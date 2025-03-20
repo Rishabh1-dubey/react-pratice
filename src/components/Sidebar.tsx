@@ -4,35 +4,42 @@ import { RiInboxUnarchiveFill } from "react-icons/ri";
 import { CiStar } from "react-icons/ci";
 import { LuClock } from "react-icons/lu"
 import { IoIosArrowDropdown, IoMdSend } from "react-icons/io";
+import { useDispatch } from 'react-redux';
+import { setOpen } from '../redux/appSlice';
+
+
+
+const sidebatItem = [
+    {
+        icon: <RiInboxUnarchiveFill size={"20"} />,
+        text: "Inbox",
+
+    }, {
+        icon: <CiStar size={"20"} />,
+        text: "Starred",
+
+    }, {
+        icon: <LuClock size={"20"} />,
+        text: "Snoozed",
+
+    }, {
+        icon: <IoMdSend size={"20"} />,
+        text: "Sent",
+
+    }, {
+        icon: <IoIosArrowDropdown size={"20"} />,
+        text: "More",
+
+    }
+
+]
+
+
 const Sidebar = () => {
 
-    const sidebatItem = [
-        {
-            icon: <RiInboxUnarchiveFill size={"20"} />,
-            text: "Inbox",
+  
 
-        }, {
-            icon: <CiStar size={"20"} />,
-            text: "Starred",
-
-        }, {
-            icon: <LuClock size={"20"} />,
-            text: "Snoozed",
-
-        }, {
-            icon: <IoMdSend size={"20"} />,
-            text: "Sent",
-
-        }, {
-            icon: <IoIosArrowDropdown size={"20"} />,
-            text: "More",
-
-        }
-
-
-
-    ]
-
+const dispatch = useDispatch()
 
     return (
         <div className='w-[270px] border rounded-2xl h-screen'>
@@ -42,7 +49,7 @@ const Sidebar = () => {
                 <button className='flex items-center justify-between bg-sky-200 py-4 px-6 rounded-2xl gap-6  '>
 
                     <FaPen />
-                    <div className='font-semibold'>Compose</div>
+                    <div onClick={()=>dispatch(setOpen(true))} className='font-semibold'>Compose</div>
                 </button>
             </div>
 

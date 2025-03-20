@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaCaretDown } from "react-icons/fa";
-import { IoMdMoon, IoMdMore, IoMdRefresh } from "react-icons/io";
+import {  IoMdMore, IoMdRefresh } from "react-icons/io";
 import { MdCropSquare } from "react-icons/md";
 import { RiInboxUnarchiveFill } from "react-icons/ri";
 import { FaRegUser } from "react-icons/fa6";
@@ -31,7 +31,7 @@ const Inbox = () => {
   ];
 
   return (
-    <div className="flex-1 bg-white rounded-xl mx-5 ">
+    <div className="flex-1 bg-white rounded-xl mx-5  ">
       <div className="flex items-center justify-between px-4">
         <div className="flex items-end justify-between text-gray-700 py-5">
           <div className="flex items-center gap-4 ">

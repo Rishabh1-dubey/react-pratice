@@ -22,7 +22,7 @@ const Mail = () => {
   ];
 
   return (
-    <div className="flex-1 items-center justify-center bg-white py-6 px-4 ">
+    <div className="h-full flex-1 items-center justify-center bg-slate-100 py-6 px-4 ">
       <div className="flex items-center justify-between">
         <div className="flex items-center justify-between gap-4">
           <button onClick={()=>{
@@ -51,9 +51,9 @@ const Mail = () => {
     <p>Rishabhdubey00@gmail.com</p>
     <p>to me</p>
   </div>
-  <div className="mt-12">message</div>
+  <div className="mt-12 pb-6">message</div>
 
-  <SendMail/>
+
     </div>
   );
 };
