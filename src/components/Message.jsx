@@ -1,14 +1,20 @@
 import React from "react";
 import { MdCropSquare, MdStar } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setSelectedMail } from "../redux/appSlice";
 
-const Message = () => {
+const Message = ({email}) => {
+
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const opemMail=()=>{
-    navigate('/mail/w12kjfj123kj')
+    dispatch(setSelectedMail(email));
+    navigate(`/mail/${email.id}`)
   }
+
 
 
   return (
@@ -22,9 +28,9 @@ const Message = () => {
       </div>{" "}
       <div className="flex-1 ml-4">
 
-      <p className=" text-gray-500 truncate inline-block max-w-full ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt nam possimus quisquam alias qui.</p>
+      <p className=" text-gray-500 truncate inline-block max-w-full ">{email.message}.</p>
       </div>
-      <div className=" flex items-center mr-2">time ayegaa</div>
+      <div className=" flex items-center mr-2 text-sm">{new Date(email?.createdAt?.seconds*1000).toUTCString()}</div>
     </div>
   );
 };
