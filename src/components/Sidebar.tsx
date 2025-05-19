@@ -60,7 +60,6 @@ const dispatch = useDispatch()
                 <div className=' mr-4 text-base  py-1  border border-none pb-3 pt-3  '>
 
                     {
-
                         sidebatItem.map(( item,index) => {
                             return (
                                 <div className={`flex gap-4 mt-2 pl-6 items-center ${index === 0 ? 'bg-blue-200 rounded-r-2xl py-1' : ''}`}>
@@ -71,28 +70,9 @@ const dispatch = useDispatch()
                             )
                         })
 
-
                     }
 
-
                 </div>
-
-
-
-
-
-
-
-
-
-
-                {/* <div className='flex items-center justify-between'>strred <CiStar /></div>
-                <div className='flex items-center justify-between'>snozzed < /></div>
-                <div className='flex items-center justify-between'>snozzed < /></div>
-                <div className='flex items-center justify-between'>snozzed< /> */}
-                {/* </div> */}
-
-
 
             </div>
 

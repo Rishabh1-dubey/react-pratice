@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoSearch } from "react-icons/io5";
 import { RxQuestionMarkCircled } from "react-icons/rx";
 import { IoSettingsOutline } from "react-icons/io5";
 import { TbGridDots } from "react-icons/tb";
 import Avatar from 'react-avatar';
+import { useDispatch, useSelector } from 'react-redux';
+import { SetsearchText } from '../redux/appSlice';
+
+
 
 const Navbar = () => {
+
+const user = useSelector((state)=> state.appSlice.user)
+
+
+const dispatch = useDispatch()
+ const[inputText, setInputText] = useState("")
+  
+useEffect(()=>{
+dispatch(SetsearchText(inputText))
+},[inputText])
+
+
+
   return (
     <>
     <div className='flex justify-between items-center mt-3'>
@@ -19,7 +36,9 @@ const Navbar = () => {
       <div className='md:block hidden w-[50%] mr-60'>
         <div className='flex items-center bg-gray-300 px-2 py-3 rounded-full gap-8'>
           <IoSearch size={"24px"} className='text-gray-700 ml-2' />
-          <input className='rounded-full w-full bg-transparent outline-none px-1' type=' text' placeholder='
+          <input value={inputText} 
+          onChange={(e)=>setInputText(e.target.value)}
+          className='rounded-full w-full bg-transparent outline-none px-1' type=' text' placeholder='
         Search mail'/>
 
         </div>
@@ -43,7 +62,8 @@ const Navbar = () => {
 
 
       {/* avatar section */}
-      <Avatar className='rounded-full mr-6 ' size='50' src='https://static.vecteezy.com/system/resources/thumbnails/023/133/583/small/man-with-glasses-and-headphones-logo-vector.jpg'/>
+      <Avatar className='rounded-full mr-6 ' size='40' src={user?.photoURL}/>
+
       {/* ---------- */}
 
 

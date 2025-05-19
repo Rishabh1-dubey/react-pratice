@@ -1,37 +1,40 @@
 import React from "react";
 import { MdCropSquare, MdStar } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSelectedMail } from "../redux/appSlice";
+import { motion } from "framer-motion";
 
-const Message = ({email}) => {
+const Message = ({ email }) => {
 
 
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const opemMail=()=>{
+  const openMail = () => {
     dispatch(setSelectedMail(email));
-    navigate(`/mail/${email.id}`)
-  }
-
-
+    navigate(`/mail/${email.id}`);
+  };
 
   return (
-    <div onClick={opemMail} className="flex items-start hover:bg-slate-100  cursor-pointer transition-all delay-100 border-b-2  rounded-md hover:rounded-md my-4 py-2   mx-2 shadow-lg">
-      <div className="flex items-center gap-3"></div>
-      <div className="flex-none px-3 ">
-        <MdCropSquare size={"20px"} />
-      </div>{" "}
-      <div className="flex-none px-3">
-        <MdStar size={"20px"} />
-      </div>{" "}
-      <div className="flex-1 ml-4">
+    <motion.div
+    onClick={openMail}
+    initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration:0.5}}
+    className="flex items-center bg-white hover:bg-slate-100 cursor-pointer transition-all border-b rounded-md my-2 py-3 px-4 shadow-md"
+  >
+    <MdCropSquare size={"20px"} className="text-gray-500" />
+    <MdStar size={"20px"} className="text-gray-500 mx-3" />
 
-      <p className=" text-gray-500 truncate inline-block max-w-full ">{email.message}.</p>
-      </div>
-      <div className=" flex items-center mr-2 text-sm">{new Date(email?.createdAt?.seconds*1000).toUTCString()}</div>
+    <div className="flex-1 overflow-hidden">
+      <p className="text-gray-600 truncate max-w-[70%]">{email.message}</p>
     </div>
+
+    <div className="text-sm text-gray-400 whitespace-nowrap ml-auto">
+      {new Date(email?.createdAt?.seconds * 1000).toUTCString()}
+    </div>
+  </motion.div>
   );
 };
 
